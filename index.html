@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Cards Look Up</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="icon" href="./favicon.ico">
+  <!-- Import scripts.js using defer to avoid render blocking -->
+  <script src="./js/scripts.js" defer></script>
+</head>
+  <body class="layout">
+    <nav class="navbar card">
+      <a href="./index.html" class="logo">
+        <img src="./assets/images/scizor.png" />
+        <span>Pokemon Cards Look Up</span>
+      </a>
+      <ul class="links">
+        <li class="nav-link flex-center">
+          <a href="#search-cards">Search cards</a>
+        </li> 
+        <li class="nav-link flex-center">
+          <a href="#gifs">Gifs</a>
+        </li> 
+        <li class="nav-link flex-center">
+          <a href="#check-list">Check list</a>
+        </li>
+        <li>
+          <button
+            id="toggle-css"
+          >
+              Disable CSS
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <main class="main">
+      <header class="about-the-project card">
+        <h1>
+          About Pokemon Cards Look Up
+        </h1>
+        <p>
+          Search for your favorite Pokemon and find all the cards that exist for it.
+        </p>
+        <h2>
+          Where do you fetch the data from?
+        </h2>
+        <p>
+          I use the <a href="https://tcgdex.dev/" target="_blank">TCGdex API</a> to fetch the data from their database.
+        </p>
+        <h2>
+          Future features
+        </h2>
+        <ul>
+          <li>Multilanguage support both for search and page.</li>
+          <li>More filters for the search.</li>
+          <li>Actually submit the form to a server.</li>
+        </ul>
+        <h2>
+          How are you submitting the form?
+        </h2>
+        <p>
+          Currently I'm just fetching the data from the API and displaying it on the page. I'm not submitting the form to any server, on form submit I execute a funcition called handleFormSubmit:
+        </p>
+        <code>
+          const handleFormSubmit = (event) => {
+            event.preventDefault();
+            const formElements = event.target.elements;
+            const cardName = formElements['card-name'].value.toLowerCase();
+            getPokemonCards(cardName);
+          };
+        </code>
+      </header>
+      <section class="grid-search card" id="search-cards">
+        <form class="card-search-form" onsubmit="handleFormSubmit(event)">
+          <label for="card-name">
+            Card name
+            <input type="text" id="card-name" required />
+          </label>
+          <button
+            type="submit"
+          >
+            search card
+          </button>
+        </form>
+      </section>
+      <section class="grid-main card">
+        <h4>Search result:</h4>
+        <ul class="card-list" id="pokemon-card-list">
+          <span>Waiting for your search... 🤔</span>
+        </ul>
+      </section>
+      <section class="check-list-wrapper card" id="check-list">
+        List of requirements for project submission📃
+        <details class="accordion" open>
+          <summary>
+            Head 👑
+          </summary>
+          <ol class="ordered-list">
+            <li>metadatos correctos</li>
+            <li>favicon ✅</li>
+            <li>title adecuado a la temática escogida ✅</li>
+          </ol>
+        </details>
+        <details class="accordion" open>
+          <summary>
+            Body 🦵
+          </summary>
+          <ol class="ordered-list">
+            <li>encabezado: logotipo o imagen representativa ✅</li>
+            <li>menú de navegación ✅</li>
+            <li>título principal de la página ✅</li>
+            <li>organización semántica ✅</li>
+            <li>etiquetas adicionales ✅</li>
+            <li>accesibilidad</li>
+            <li>pie de página ✅</li>
+            <li>formulario ✅</li>
+          </ol>
+        </details>
+        <details class="accordion" open>
+          <summary>
+            Exigencia 🏋️‍♂️
+          </summary>
+          <ol class="ordered-list">
+            <li>página web accesible y navegable sin necesidad de CSS ✅</li>
+            <li>estructura del código HTML clara, organizada y bien indentada ✅</li>
+            <li>comentarios para explicar el código y su organización si lo ves necesario ✅</li>
+          </ol>
+        </details>
+      </section>
+      <section class="gifs card" id="gifs">
+        GIFs
+        <div class="gifs-wrapper">
+          <img src="https://media.tenor.com/gp40E-RL_0sAAAAS/may-torchic.gif" alt="Torchic with muscle." />
+          <img src="https://media.tenor.com/INwX0ODT7vQAAAAi/party-dancing.gif" alt="Dancing ditto." />
+          <img src="https://media.tenor.com/rFe-9I1nWQIAAAAi/pikachu-pokemon.gif" alt="A spinning Pikachu" />
+        </div>
+      </section>
+    </main>
+    <footer class="footer card">
+      <p id="about-me">©️ <span id="footerCurrentYear"></span>  | Gabriel De Lellis.</p>
+    </footer>
+  </body>
+</html>
